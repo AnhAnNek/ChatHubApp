@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_CODE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ChatHub"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".friend.sentrequest.SentRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.image.ImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.ChatActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".friend.friendsuggestion.FriendSuggestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".friend.myfriend.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".friend.profileviewer.ProfileViewerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.login.otp.verify.VerifyOtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.login.otp.phonenumberinput.PhoneNumberInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.accountlink.AccountLinkingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".common.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".user.profile.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.forgotpassword.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.login.google.GoogleSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.signup.SignUpActivity"
+            android:exported="true" />
+
+        <service
+            android:name=".chat.MessagingService"
+            android:exported="false"
+            android:permission="android.permission.FOREGROUND_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+<!--        <service-->
+<!--            android:name=".chat.notify.FCMMessageReceiverService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/FCM_CHANEL_ID" />
+    </application>
+</manifest>

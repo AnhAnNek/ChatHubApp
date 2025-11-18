@@ -1,0 +1,99 @@
+package com.example.common.customcontrol.inputdialogfragment;
+
+import com.example.common.customcontrol.DialogDismissListener;
+
+import java.util.function.Consumer;
+
+/**
+ * Lớp InputDialogModel đại diện cho cấu hình và hành vi của hộp thoại input.
+ *
+ * Tác giả: Trần Văn An
+ */
+public class InputDialogModel {
+    private String title;
+    private EInputType type = EInputType.NORMAL;
+    private String curContent;
+    private boolean cancelable = true;
+    private Consumer<String> submitButtonClickListener;
+    private DialogDismissListener dismissListener;
+
+    private InputDialogModel() {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public EInputType getType() {
+        return type == null ? EInputType.NORMAL : type;
+    }
+
+    public String getCurContent() {
+        return curContent;
+    }
+
+    public boolean isCancelable() {
+        return cancelable;
+    }
+
+    public Consumer<String> getSubmitButtonClickListener() {
+        return submitButtonClickListener;
+    }
+
+    public DialogDismissListener getDismissListener() {
+        return dismissListener;
+    }
+
+    /**
+     * Lớp Builder để tạo một instance của InputDialogModel.
+     */
+    public static class Builder {
+        private String title;
+        private EInputType type;
+        private String curContent;
+        private boolean cancelable = true;
+        private Consumer<String> submitButtonClickListener;
+        private DialogDismissListener dismissListener;
+
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder setType(EInputType type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder setCurrentContent(String curContent) {
+            this.curContent = curContent;
+            return this;
+        }
+
+        public Builder setCancelable(boolean cancelable) {
+            this.cancelable = cancelable;
+            return this;
+        }
+
+        public Builder setSubmitButtonClickListener(Consumer<String> submitButtonClickListener) {
+            this.submitButtonClickListener = submitButtonClickListener;
+            return this;
+        }
+
+        public Builder setDismissListener(DialogDismissListener dismissListener) {
+            this.dismissListener = dismissListener;
+            return this;
+        }
+
+        public InputDialogModel build() {
+            InputDialogModel dialogModel = new InputDialogModel();
+            dialogModel.title = this.title;
+            dialogModel.type = type;
+            dialogModel.curContent = this.curContent;
+            dialogModel.cancelable = this.cancelable;
+            dialogModel.submitButtonClickListener = this.submitButtonClickListener;
+            dialogModel.dismissListener = dismissListener;
+            return dialogModel;
+        }
+    }
+}
